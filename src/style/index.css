@@ -1,0 +1,25 @@
+:root {
+  --large-padding: 16px;
+  --default-padding: 12px;
+}
+
+.fdr {
+  display: flex;
+  flex-direction: row;
+}
+.fdc {
+  display: flex;
+  flex-direction: column;
+}
+.jcc {
+  justify-content: cen;
+}
+
+.a-modal[aframe-injected] {
+  display: none;
+  pointer-events: none;
+}
+* {
+  padding: 0px;
+  margin: 0px;
+}

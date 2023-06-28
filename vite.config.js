@@ -15,7 +15,7 @@ export default defineConfig({
   server: {
     fs: { strict: false },
     host: '0.0.0.0',
-    port: 10001,
+    port: 9100,
     strictPort: true
   },
   plugins: [

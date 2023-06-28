@@ -1,9 +1,5 @@
 <template>
-  <el-card
-    class="popper-card"
-    :style="{ width }"
-    :body-style="{ overflow: bodyAutoScroll ? 'auto' : 'hidden', ...bodyStyle }"
-  >
+  <el-card class="popper-card" :style="{ width }" :body-style="{ overflow: 'auto', ...bodyStyle }">
     <template v-if="!disabledHeader" #header>
       <div class="fdr card-header">
         <slot name="header-left">

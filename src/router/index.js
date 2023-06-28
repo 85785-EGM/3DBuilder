@@ -1,9 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import guide from './guide'
-import workspace from './workspace'
 import common from './common'
+import workspace from './workspace'
 
 export default createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
-  routes: [...guide, ...common, ...workspace]
+  routes: [...common, ...workspace]
 })

@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "vite"
   },
   "author": "qi ming yan",
   "license": "ISC",
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
+    "@popperjs/core": "^2.11.8",
     "aframe": "^1.4.2",
     "hotkeys-js": "^3.10.2",
     "pinia": "^2.0.32",

@@ -1,18 +1,18 @@
 :root {
   --large-padding: 16px;
   --default-padding: 12px;
+  --system-top-bar: 34px;
 }
 
 .fdr {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 .fdc {
   display: flex;
   flex-direction: column;
-}
-.jcc {
-  justify-content: cen;
+  justify-content: center;
 }
 
 .a-modal[aframe-injected] {

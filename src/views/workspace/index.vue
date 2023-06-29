@@ -1,13 +1,17 @@
 <template>
   <router-view v-slot="{ Component }">
-    <base-layout padding="0"> </base-layout>
+    <base-layout> </base-layout>
 
-    <system-top-bar></system-top-bar>
+    <system-top-bar ref="systemTopBarRef"></system-top-bar>
 
     <component :is="Component" ref="worksapceRef"></component>
   </router-view>
 </template>
 
-<script setup></script>
+<script setup>
+  const systemTopBarRef = ref()
+
+  window.addEventListener('click', () => systemTopBarRef.value.reset())
+</script>
 
 <style scoped></style>

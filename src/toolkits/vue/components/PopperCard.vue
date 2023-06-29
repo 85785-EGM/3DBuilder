@@ -30,7 +30,7 @@
   const emit = defineEmits(['close'])
   const props = defineProps({
     title: { type: String, default: '标题名称' },
-    width: { type: String, default: '340px' },
+    width: { type: String, default: '300px' },
     bodyAutoScroll: { type: Boolean, default: true },
     bodyStyle: { type: Object, default: () => ({}) },
 
@@ -47,23 +47,22 @@
   .popper-card :deep(.el-card__body) {
     flex: 1;
     overflow: hidden;
-    padding: var(--large-padding);
+    padding: var(--default-padding);
   }
   .popper-card + .popper-card {
     margin-top: var(--default-padding);
   }
   .popper-card :deep(.el-card__header) {
-    padding: var(--default-padding) var(--large-padding);
+    padding: var(--little-padding) var(--default-padding);
   }
   .card-header {
     align-items: center;
     justify-content: space-between;
     line-height: 22px;
     height: 22px;
-    font-size: 16px;
   }
   .popper-card-content {
-    font-size: 15px;
     height: 100%;
+    font-size: 13px;
   }
 </style>

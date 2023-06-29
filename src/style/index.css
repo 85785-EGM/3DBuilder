@@ -1,9 +1,19 @@
 :root {
   --large-padding: 16px;
   --default-padding: 12px;
-  --system-top-bar: 34px;
-}
+  --little-padding: 8px;
+  --system-top-bar-height: 34px;
 
+  --system-top-bar-background-color: #181818;
+  --system-top-bar-hover-background-color: #2d2e2e;
+  --system-top-bar-child-background-color: #1f1f1f;
+  --system-top-bar-child-hover-background-color: #323232;
+  --system-top-bar-border-color: #454545;
+  --system-top-bar-text-color: #e1e1e1;
+}
+html{
+  font-size: 14px;
+}
 .fdr {
   display: flex;
   flex-direction: row;
@@ -22,4 +32,7 @@
 * {
   padding: 0px;
   margin: 0px;
+}
+.a-canvas.a-grab-cursor:hover{
+  cursor: default !important;
 }

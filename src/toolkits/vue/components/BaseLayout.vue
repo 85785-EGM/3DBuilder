@@ -24,7 +24,7 @@
   import { layout } from '@/config.js'
 
   const props = defineProps({
-    padding: { type: String, default: 'var(--large-padding)' }
+    padding: { type: String, default: '6px' }
   })
 </script>
 
@@ -46,9 +46,9 @@
   .base-layout {
     position: absolute;
     left: 0px;
-    top: var(--system-top-bar);
+    top: var(--system-top-bar-height);
     width: 100%;
-    height: calc(100% - var(--system-top-bar));
+    height: calc(100% - var(--system-top-bar-height));
     overflow: hidden;
     z-index: 100;
     pointer-events: none;

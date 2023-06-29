@@ -2,7 +2,7 @@ import { AxesHelper } from 'three'
 export default {
   dependencies: [],
   schema: {
-    size: { type: 'number', default: 10 },
+    size: { type: 'number', default: 4 },
     visible: { type: 'boolean', default: false }
   },
   init () {

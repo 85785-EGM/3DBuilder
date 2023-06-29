@@ -11,4 +11,5 @@
 
 <style>
   @import url('./style/index.css');
+  @import url('./style/element-dark.css');
 </style>

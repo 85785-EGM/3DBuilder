@@ -1,12 +1,17 @@
 <template>
   <a-scene keyboard-shortcuts="enterVR: false" ref="sceneEl" background="color: #3b3b3b">
-    <a-cam></a-cam>
+    <a-cam alias="相机"> </a-cam>
+    <a-entity geometry="primitive:box" material> </a-entity>
   </a-scene>
   <teleport to="#layout-right-top">
-    <popper-card> asd </popper-card>
+    <SceneTree />
+    <SceneComponent />
   </teleport>
 </template>
 
-<script setup></script>
+<script setup>
+  import SceneTree from './SceneTree.vue'
+  import SceneComponent from './SceneComponent.vue'
+</script>
 
 <style scoped></style>

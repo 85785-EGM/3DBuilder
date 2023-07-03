@@ -30,7 +30,7 @@
   const emit = defineEmits(['close'])
   const props = defineProps({
     title: { type: String, default: '标题名称' },
-    width: { type: String, default: '300px' },
+    width: { type: String, default: '320px' },
     bodyAutoScroll: { type: Boolean, default: true },
     bodyStyle: { type: Object, default: () => ({}) },
 

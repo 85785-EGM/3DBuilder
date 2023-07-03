@@ -11,7 +11,7 @@
   --system-top-bar-border-color: #454545;
   --system-top-bar-text-color: #e1e1e1;
 }
-html{
+html {
   font-size: 14px;
 }
 .fdr {
@@ -33,6 +33,37 @@ html{
   padding: 0px;
   margin: 0px;
 }
-.a-canvas.a-grab-cursor:hover{
+.a-canvas.a-grab-cursor:hover {
   cursor: default !important;
+}
+
+.el-color-picker__panel {
+  background-color: var(--el-color-picker-alpha-bg-a) !important;
+}
+
+/*  */
+
+.aframe-component-item label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 6px;
+}
+.aframe-component-group {
+  padding: 6px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.aframe-component-item {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+}
+.aframe-component-item + .aframe-component-item {
+  margin-left: 12px;
+}
+.aframe-component-group .el-input-number--small {
+  width: auto;
 }

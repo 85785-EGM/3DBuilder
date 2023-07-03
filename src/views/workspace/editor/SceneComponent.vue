@@ -3,7 +3,7 @@
     <template v-for="(component, key) of Object.fromEntries(componentRender)" :key="key">
       <el-divider content-position="left">{{ key }}</el-divider>
 
-      <component :is="component"></component>
+      <component :is="component" :object="getComponentObject(key)"></component>
     </template>
   </popper-card>
 </template>
@@ -11,6 +11,7 @@
 <script setup>
   import useSceneStore from '@/stores/scene'
   import * as aframeComponents from '@/toolkits/vue/aframeComponents'
+
   const COMPONENTS_DICT = Object.fromEntries(
     Object.entries(aframeComponents).map(([key, value]) => [key.toLowerCase(), markRaw(value)])
   )
@@ -19,15 +20,19 @@
 
   watch(() => scene.selectedNode, getComponent)
 
-  function getComponent () {
+  async function getComponent () {
     componentRender.length = 0
+    await nextTick()
     const components = scene.selectedNode.el.components
-
     Object.entries(components).forEach(([key, value]) => {
-      if (`aframe${key.toLowerCase()}` in COMPONENTS_DICT) {
+      if (`aframe${key.replace('-', '').toLowerCase()}` in COMPONENTS_DICT) {
         componentRender.push([key, COMPONENTS_DICT[`aframe${key.toLowerCase()}`]])
       }
     })
+  }
+
+  function getComponentObject (key) {
+    return scene.selectedNode.el.components[key]
   }
 </script>
 

@@ -1,35 +1,33 @@
 <template>
-  <div class="fdr group">
-    <div class="item">
+  <div class="aframe-component-group">
+    <div class="aframe-component-item">
       <label>opacity</label>
-      <el-input-number size="small" :max="1" :min="0" :step="0.01" :precision="2" step-strictly />
+      <el-input-number
+        v-model="data.opacity"
+        size="small"
+        :max="1"
+        :min="0"
+        :step="0.01"
+        :precision="2"
+        step-strictly
+      />
     </div>
-    <div class="item">
+    <div class="aframe-component-item">
       <label>color</label>
-      <el-color-picker size="small" />
+      <el-color-picker v-model="data.color" size="small" />
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+  const props = defineProps({
+    object: { type: Object, required: true }
+  })
+  const data = reactive(props.object.data)
 
-<style scoped>
-  label {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-right: 6px;
+  watch(() => Object.entries(data), update)
+
+  function update () {
+    props.object.el.setAttribute(props.object.attrName, data)
   }
-  .group {
-    padding: 6px 0px;
-  }
-  .item {
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    white-space: nowrap;
-  }
-  .item + .item {
-    margin-left: 12px;
-  }
-</style>
+</script>

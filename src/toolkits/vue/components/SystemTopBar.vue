@@ -35,6 +35,8 @@
   import { ArrowRightBold } from '@element-plus/icons-vue'
   import createCube from '@/utils/aframe/createCube.ts'
   import importModel from '@/utils/aframe/importModel.ts'
+  import exportScene from '@/utils/aframe/exportScene.ts'
+  import exportModel from '@/utils/aframe/exportModel.ts'
 
   const menuItemRef = ref()
   const childItemRef = ref()
@@ -54,6 +56,14 @@
             { title: 'PLY ( .ply )', click: importModel.bind(window, 'ply') },
             { title: 'STL ( .stl )', click: importModel.bind(window, 'stl') }
           ]
+        },
+        {
+          title: '导出场景',
+          children: [{ title: 'GLTF ( .glb/.gltf )', click: exportScene.bind(window, 'gltf') }]
+        },
+        {
+          title: '导出选中模型',
+          children: [{ title: 'STL ( .stl )', click: exportModel.bind(window, 'gltf') }]
         }
       ]
     },
@@ -64,7 +74,16 @@
           title: '添加',
           children: [
             { title: '四方体', click: createCube.bind(window, 'box') },
-            { title: '球', click: createCube.bind(window, 'sphere') }
+            { title: '圆', click: createCube.bind(window, 'circle') },
+            { title: '圆柱', click: createCube.bind(window, 'cylinder') },
+            { title: '十二面体', click: createCube.bind(window, 'dodecahedron') },
+            { title: '八面体', click: createCube.bind(window, 'octahedron') },
+            { title: '平面', click: createCube.bind(window, 'plane') },
+            { title: '环状物', click: createCube.bind(window, 'ring') },
+            { title: '球', click: createCube.bind(window, 'sphere') },
+            { title: '四面体', click: createCube.bind(window, 'tetrahedron') },
+            { title: '环面', click: createCube.bind(window, 'torus') },
+            { title: '圆环结', click: createCube.bind(window, 'torusKnot') }
           ]
         }
       ]

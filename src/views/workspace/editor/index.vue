@@ -1,6 +1,7 @@
 <template>
   <a-scene keyboard-shortcuts="enterVR: false" ref="sceneEl" background="color: #3b3b3b">
     <a-cam alias="相机"> </a-cam>
+    <a-entity geometry="primitive: box" material />
   </a-scene>
   <teleport to="#layout-right-top">
     <SceneTree />

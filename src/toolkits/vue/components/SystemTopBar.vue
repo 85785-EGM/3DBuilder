@@ -57,13 +57,13 @@
             { title: 'STL ( .stl )', click: importModel.bind(window, 'stl') }
           ]
         },
-        {
-          title: '导出场景',
-          children: [{ title: 'GLTF ( .glb/.gltf )', click: exportScene.bind(window, 'gltf') }]
-        },
+        // {
+        //   title: '导出场景',
+        //   children: [{ title: 'GLTF ( .glb/.gltf )', click: exportScene.bind(window, 'gltf') }]
+        // },
         {
           title: '导出选中模型',
-          children: [{ title: 'STL ( .stl )', click: exportModel.bind(window, 'gltf') }]
+          children: [{ title: 'STL ( .stl )', click: exportModel.bind(window, 'stl') }]
         }
       ]
     },

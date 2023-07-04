@@ -17,6 +17,27 @@
       <el-color-picker v-model="data.color" size="small" />
     </div>
   </div>
+  <div class="aframe-component-group">
+    <div class="aframe-component-item">
+      <label>side</label>
+      <el-select v-model="data.side" size="small">
+        <el-option label="front" value="front" />
+        <el-option label="back" value="back" />
+        <el-option label="double" value="double" />
+      </el-select>
+    </div>
+    <div class="aframe-component-item">
+      <label>flatShading</label>
+      <el-switch v-model="data.flatShading" size="small" />
+    </div>
+  </div>
+  <div class="aframe-component-group">
+    <div class="aframe-component-item">
+      <label>wireframe</label>
+      <el-switch v-model="data.wireframe" size="small" />
+    </div>
+    <div class="aframe-component-item"></div>
+  </div>
 </template>
 
 <script setup>

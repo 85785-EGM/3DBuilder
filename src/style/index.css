@@ -66,4 +66,5 @@ html {
 }
 .aframe-component-group .el-input-number--small {
   width: auto;
+  flex: 1;
 }

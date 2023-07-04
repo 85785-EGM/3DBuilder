@@ -1,6 +1,4 @@
-import { BufferGeometry, Vector3 } from 'three'
 import { PLYExporter } from 'three/examples/jsm/exporters/PLYExporter'
-import { OBJExporter } from 'three/examples/jsm/exporters/OBJExporter'
 import saveFile from '@/utils/file/saveFile'
 
 const DEFAULT_OPTIONS = {
@@ -8,8 +6,7 @@ const DEFAULT_OPTIONS = {
 }
 export default {
   init () {
-    this.exporter = new PLYExporter()
-    this.e = new OBJExporter()
+    this.exporter = new PLYExporter().parse
   },
   export (mesh, options = {}) {
     const data = this.exporter.parse(mesh, null, { ...DEFAULT_OPTIONS, ...options })
@@ -17,9 +14,7 @@ export default {
     saveFile(new Blob([data]), name)
   },
   exportToArrayBuffer (mesh, options = {}) {
-    const data = this.exporter.parse(mesh, null, {
-      ...DEFAULT_OPTIONS
-    })
+    const data = this.exporter.parse(mesh, null, { ...DEFAULT_OPTIONS, ...options })
     return data
   }
 }

@@ -3,6 +3,9 @@
     <a-cam alias="相机"> </a-cam>
     <a-entity geometry="primitive: box" material />
   </a-scene>
+
+  <teleport to="#layout-left-top"> asdf </teleport>
+
   <teleport to="#layout-right-top">
     <SceneTree />
     <SceneComponent />

@@ -2,7 +2,7 @@ import useHistoryStore from '@/stores/history'
 import { MatrixCommit } from '@/utils/commit'
 import { TransformControls } from 'three/examples/jsm/controls/TransformControls'
 
-const DEFAULT_ATTACH_OPTIONs = {
+const DEFAULT_ATTACH_OPTION = {
   object3DName: 'mesh',
   mode: 'translate', // translate rotate scale
   enabledXYZ: 'xyz',
@@ -10,24 +10,24 @@ const DEFAULT_ATTACH_OPTIONs = {
 }
 
 function pointerup (preMatrix) {
-  if (this.dragging) {
-    const object = this.controls.object
-    object.updateWorldMatrix()
-    const commit = new MatrixCommit(object, preMatrix.clone(), object.matrix.clone())
-    this.history.push(commit)
-    preMatrix.copy(object.matrix)
-  } else {
+  if (!this.dragging) {
     this.el.emit('click-blank')
   }
 }
 
 export default {
-  attach (el, options = {}) {
-    this.el.systems['draw-shape'].data = false
-    this.initControls()
-    this.options = JSON.parse(JSON.stringify(options))
-    const { object3DName, mode, enabledXYZ, size } = { ...DEFAULT_ATTACH_OPTIONs, ...options }
-    const object = reactive(el.object3D)
+  initControl () {
+    if (this.controls) return
+    const dom = this.el.renderer.domElement
+    const camera = this.el.camera
+
+    this.controls = new TransformControls(camera, dom)
+    this.el.setObject3D('transformControls', this.controls)
+  },
+
+  attach (object3D, options = {}) {
+    this.initControl()
+    const { mode, enabledXYZ, size } = { ...DEFAULT_ATTACH_OPTION, ...options }
     this.controls.setMode(mode)
     this.controls.setSize(size)
 
@@ -37,32 +37,20 @@ export default {
     if (/[xX]/.test(enabledXYZ)) this.controls.showX = true
     if (/[yY]/.test(enabledXYZ)) this.controls.showY = true
     if (/[zZ]/.test(enabledXYZ)) this.controls.showZ = true
-    this.controls.attach(object)
+    this.controls.attach(object3D)
 
     // 为了避免重复绑定，所以额外解除事件
-    // this.el.renderer.domElement.removeEventListener('pointerup', this.pointerup)
-    // this.pointerup = pointerup.bind(this, object.matrix.clone())
-    // this.el.renderer.domElement.addEventListener('pointerup', this.pointerup)
+    this.el.renderer.domElement.removeEventListener('pointerup', this.pointerup)
+    this.pointerup = pointerup.bind(this, object3D.matrix.clone())
+    this.el.renderer.domElement.addEventListener('pointerup', this.pointerup)
 
-    this.onChange?.()
-
-    return object
+    return object3D
   },
   detach () {
-    if (!this.controls) return
     this.controls.detach()
-    // this.el.renderer.domElement.removeEventListener('pointerup', this.pointerup)
-    this.onChange?.()
+    this.el.renderer.domElement.removeEventListener('pointerup', this.pointerup)
   },
-  initControls () {
-    if (this.controls) return
-    const dom = this.el.renderer.domElement
-    const camera = this.el.camera
-
-    this.history = useHistoryStore()
-    this.controls = new TransformControls(camera, dom)
-    this.el.setObject3D('transformControls', this.controls)
-  },
+  initControls () {},
 
   tick () {
     this.dragging = this.controls?.dragging

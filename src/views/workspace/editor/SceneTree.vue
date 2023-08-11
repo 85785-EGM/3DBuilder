@@ -18,4 +18,7 @@
   :deep(.el-tree-node) {
     font-size: 13px;
   }
+  * {
+    user-select: none;
+  }
 </style>

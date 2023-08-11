@@ -12,7 +12,7 @@ const raycaster = new Raycaster()
  * mousedown
  * mouseup
  * click
- * doubleClick
+ * dblclick
  */
 
 function findEl (object3D = new Object3D(), depth = 0) {
@@ -28,6 +28,7 @@ function notify (eventname = 'mousedown', event, target = {}) {
       component.events[eventname](event, target)
     }
   })
+  target.el.emit(eventname, event)
 }
 
 function clickCheck (event, returnData = this.state.judgeClick) {
@@ -35,7 +36,6 @@ function clickCheck (event, returnData = this.state.judgeClick) {
   const time = new Date().getTime()
 
   const { lastObject, lastClickTime, lastClickObject } = returnData
-
   if (this.state.type === 'mouseup') {
     // 如果down和up在同一个object，触发click
     if (lastObject === this.state.target.object) {
@@ -52,7 +52,7 @@ function clickCheck (event, returnData = this.state.judgeClick) {
         returnData.lastClickTime = -1
         returnData.lastClickObject = null
         notify('click', event, this.state.target)
-        notify('doubleClick', event, this.state.target)
+        notify('dblclick', event, this.state.target)
       } else {
         returnData.lastClickTime = time
         returnData.lastClickObject = this.state.target.object

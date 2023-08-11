@@ -40,4 +40,7 @@
   :deep(.el-divider__text) {
     background-color: var(--el-card-bg-color);
   }
+  * {
+    user-select: none;
+  }
 </style>
